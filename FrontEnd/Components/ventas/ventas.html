@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/AbarrotesJuarez/FrontEnd/Components/Ventas/ventas.css">
+
+    <input type="text" id="inp-escaner" placeholder="Ingresa codigo de barras / nombre del producto">  
+
+    <button id="btn-consulta">CONSULTA</button>
+
+<div class="div-articulos">
+    <table id="tbl-articulos">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <td>0123456789</td>
+            <td>Takis</td>
+            <td>Takis fuego Barcel de 56 gramos</td>
+            <td>2</td>
+            <td>44.00</td>
+        </tr>
+    </table>
+</div>
+
+<div class="div-venta">
+    <button id="btn-recarga">RECARGA</button>
+
+    <select id="sel-tipo">
+        <option value="EFECT">EFECTIVO</option>
+        <option value="TARJE">TARJETA</option>
+        <option value="DOLAR">DOLAR</option>
+    </select>
+
+    <select id="sel-metodo">
+        <option value="CONTA">CONTADO</option>
+        <option value="SALDO">SALDO</option>
+    </select>
+
+<div class="div-total">
+    <table id="tbl-total">
+        <tr>
+            <th>TOTAL A PAGAR</th>
+        </tr>
+        <tr>
+            <td>44.00</td>
+        </tr>
+    </table>
+</div>
+
+<div class="div-recibido">
+    <table id="tbl-recibido">
+        <tr>
+            <th>RECIBIDO</th>
+        </tr>
+        <tr>
+            <td>50.00</td>
+        </tr>
+    </table>
+</div>
+
+<div class="div-cambio">
+    <table id="tbl-cambio">
+        <tr>
+            <th>CAMBIO</th>
+        </tr>
+        <tr>
+            <td>6.00</td>
+        </tr>
+    </table>
+</div>
+
+    <button id="btn-pagar">PAGAR</button>
+</div>

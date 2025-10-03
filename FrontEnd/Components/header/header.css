@@ -1,0 +1,31 @@
+.header-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 8px 80px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+}
+
+.header-left .img {
+    width: 56px;
+    height: 56px;
+}
+
+.header-left .header-title {
+    color: white;
+    font-size: 50px;
+    margin: 0;
+}
+
+#h-modulo {
+    color: white;
+    font-size: 50px;
+    margin: 0;
+    min-width: 300px; 
+    text-align: right;
+}

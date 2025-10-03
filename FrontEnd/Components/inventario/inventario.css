@@ -1,0 +1,113 @@
+#inp-escaner {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    width: 800px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px gray;
+    padding-left: 15px;
+    font-size: 28px;
+    color:  black;
+}
+
+#inp-escaner::placeholder {
+    font-size: 28px;
+    color: gray;
+    
+}
+
+#btn-filtrar {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    width: 182px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px gray;
+    font-size: 28px;
+    background-color: #3498DB;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-filtrar:hover {
+    background-color: #2C80B4;
+}
+
+#btn-ajustar {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    width: 182px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px gray;
+    font-size: 28px;
+    background-color: #4A6B8A;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-ajustar:hover {
+    background-color: #2C3E50;
+}
+
+#btn-agregar {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    width: 182px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px gray;
+    font-size: 28px;
+    background-color: #27AE60;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-agregar:hover {
+    background-color: #1E8449;
+}
+
+#tbl-inventario {
+    width: 1405px;
+    height: 80px;
+    line-height: 40px;
+    border-collapse: collapse;
+    font-size: 20px;
+    text-align: center;
+}
+
+#tbl-inventario th {
+    color: white;
+    background-color: #2C3E50;
+}
+
+#tbl-inventario th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-inventario th:last-child {
+    border-top-right-radius: 5px;
+}
+
+.div-inventario {
+    margin-left: 15px;
+    width: 1405px;
+    height: 515px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px gray;
+    background-color: white;
+}
