@@ -1,0 +1,35 @@
+.sidemenu-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+    padding: 0px 0px;
+    height: 100%; 
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.sidemenu-container button {
+    background-color: #CD3333;
+    padding: 10px 10px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;   
+    align-items: center;      
+    justify-content: center;  
+    gap: 6px;                 
+    font-size: 10px;         
+}
+.sidemenu-container button .btn-icon {
+    width: 45px;
+    height: 45px;
+}
+
+.sidemenu-container button:hover {
+    background-color: #8F2323;
+}
+

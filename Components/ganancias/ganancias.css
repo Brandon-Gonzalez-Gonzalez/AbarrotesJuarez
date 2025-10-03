@@ -1,0 +1,163 @@
+#btn-contado {
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-right: -5px;
+    width: 182px;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    background-color: #2C3E50;
+    color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    /*cursor: pointer;
+    transition: background-color 0.2s ease;*/
+}
+
+#btn-saldo {
+    margin-left: 0px;
+    margin-top: 20px;
+    width: 182px;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    background-color: #4A6B8A;
+    color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    /*cursor: pointer;
+    transition: background-color 0.2s ease;*/
+}
+
+#btn-exportar {
+    margin-left: 845px;
+    margin-top: 20px;
+    width: 192px;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    background-color: #27AE60;
+    color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-agregar:hover {
+    background-color: #1E8449;
+}
+
+.div-ganancias {
+    margin-left: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 1405px;
+    height: 535px;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 4px 8px gray;
+    background-color: white;
+}
+
+.div-kpis {
+    display: flex;   
+    gap: 20px;       
+}
+
+#tbl-kpiGanancia {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 80px;
+    box-shadow: 0px 4px 8px gray;
+    border-radius: 5px;
+}
+
+#tbl-kpiGanancia th {
+    font-size: 16px;
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+}
+
+#tbl-kpiGanancia th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-kpiGanancia th:last-child {
+    border-top-right-radius: 5px;
+}
+
+#tbl-kpiGanancia td {
+    padding-top: 10px;
+    font-size: 24px;
+    height: 50px;
+    text-align: center;
+}
+
+#tbl-kpiArticulos {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 250px;
+    height: 80px;
+    box-shadow: 0px 4px 8px gray;
+    border-radius: 5px;
+}
+
+#tbl-kpiArticulos th {
+    font-size: 16px;
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+}
+
+#tbl-kpiArticulos th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-kpiArticulos th:last-child {
+    border-top-right-radius: 5px;
+}
+
+#tbl-kpiArticulos td {
+    padding-top: 10px;
+    font-size: 24px;
+    height: 50px;
+    text-align: center;
+}
+
+.div-contenido {
+    width: 1375px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px gray;
+}
+
+#tbl-ganancias {
+    width: 1375px;
+    height: 80px;
+    line-height: 40px;
+    border-collapse: collapse;
+    font-size: 20px;
+    text-align: center;
+}
+
+#tbl-ganancias th {
+    color: white;
+    background-color: #2C3E50;
+}
+
+#tbl-ganancias th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-ganancias th:last-child {
+    border-top-right-radius: 5px;
+}
