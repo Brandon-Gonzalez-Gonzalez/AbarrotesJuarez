@@ -1,0 +1,25 @@
+git init 
+git remote add origin https://github.com/Brandon-Gonzalez-Gonzalez/Abarrotes-Juarez.git
+git checkout -b crearNuevaRama
+git checkout cambiarDeRama
+
+git add .                               #Agrega cambios e indica de que carpeta
+git commit -m "Primer cambio"
+git push -u origin nombreRama           #primera vez que se realiza cambio
+
+git add .
+git commit -m "Más cambios"
+git push                                # ya sabe en donde va en Git porque ya existe
+
+git branch                              # ramas locales
+git branch -r                           # ramas remotas
+git branch -a                           # todas
+
+
+#Implementar cambios de otras ramas a la principal
+
+git checkout main 
+git merge BackEnd
+git merge FrontEnd
+git push origin main
+
