@@ -1,3 +1,4 @@
+--actualizar todos los sp
 --Procedimiento almacenado para ventas
 DELIMITER $$
 CREATE PROCEDURE RegistroDeVenta(
@@ -16,39 +17,68 @@ END $$
 
 --Procedimiento almacenado para articulos
 DELIMITER $$
+
 CREATE PROCEDURE AñadirArticulo(
     IN p_codigo VARCHAR(64),
-    IN p_nombre VARCHAR(24),
-    IN p_descripcion VARCHAR(24),
+    IN p_nombre VARCHAR(64),
+    IN p_descripcion VARCHAR(128),
+    IN p_peso DECIMAL(10,2),
+    IN p_categoria INT,
+    IN p_proveedor INT,
+    IN p_fechaCaducidad DATE,
     IN p_ultimaModificacion DATE,
-    IN p_peso INT,
     IN p_unidades INT,
-    IN p_precio DECIMAL(10,2),
-    IN p_categoria INT
+    IN p_precio DECIMAL(10,2)
 )
 BEGIN
-    INSERT INTO ARTICULO(codigo, nombre, descripcion, ultimaModificacion, unidades, precio, categoria)
-    VALUES(p_codigo, p_nombre, p_descripcion, p_ultimaModificacion, p_peso, p_unidades, p_precio, p_categoria);
+    INSERT INTO ARTICULO(codigo, nombre, descripcion, peso, categoria, proveedor, fechaCaducidad, ultimaModificacion, unidades, precio)
+    VALUES(p_codigo, p_nombre, p_descripcion, p_peso, p_categoria, p_proveedor, p_fechaCaducidad, p_ultimaModificacion, p_unidades, p_precio);
 END $$
+DELIMITER ;
+
 
 
 --Procedimiento almacenado para saldos
 DELIMITER $$
+
 CREATE PROCEDURE AgregarSaldo(
-    IN p_nombre VARCHAR(24),
-    IN p_primerApell VARCHAR(32),
-    IN p_segApell VARCHAR(32),
     IN p_fechaRegistro DATE,
-    IN p_fechaPago DATE,
-    IN p_deuda DECIMAL(10,2),
-    IN p_pago DECIMAL(10,2),
     IN p_total DECIMAL(10,2),
-    IN p_venta INT
+    IN p_cliente INT
 )
 BEGIN
-    INSERT INTO SALDO(nombre, primerApell, segApell, fechaRegistro, fechaPago, deuda, pago, total, venta)
-    VALUES(p_nombre, p_primerApell, p_segApell, p_fechaRegistro, p_fechaPago, p_deuda, p_pago, p_total, p_venta);
+    INSERT INTO SALDO(fechaRegistro, total, cliente)
+    VALUES(p_fechaRegistro, p_total, p_cliente);
 END $$
+DELIMITER ;
+
+--Procedimiento almacenado para clientes
+DELIMITER $$
+CREATE PROCEDURE AgregarCliente(
+    IN p_nombrePila VARCHAR(64),
+    IN p_primerApellido VARCHAR(64),
+    IN p_segApellido VARCHAR(64)
+)
+BEGIN
+    INSERT INTO CLIENTE(nombrePila, primerApellido, segApellido)
+    VALUES(p_nombrePila, p_primerApellido, p_segApellido);
+END $$
+DELIMITER ;
+
+--Procedimiento almacenado para pagos
+DELIMITER $$
+CREATE PROCEDURE AgregarPago(
+    IN p_montoPago DECIMAL(10,2),
+    IN p_numPago INT,
+    IN p_fechaPago DATE,
+    IN p_saldo INT
+)
+BEGIN
+    INSERT INTO PAGO(montoPago, numPago, fechaPago, saldo)
+    VALUES(p_montoPago, p_numPago, p_fechaPago, p_saldo);
+END $$
+DELIMITER ;
+
 
 --Procedimiento almacenado para articulos por ventas
 DELIMITER $$
@@ -56,12 +86,13 @@ CREATE PROCEDURE ArticulosPorVenta(
     IN p_venta INT,
     IN p_articulo VARCHAR(64),
     IN p_cantidad INT,
-    IN p_total DECIMAL(10,2)
+    IN p_importe DECIMAL(10,2)
 )
 BEGIN
-    INSERT INTO ARTICULO_VENTA(venta, articulo, cantidad, total)
-    VALUES(p_venta, p_articulo, p_cantidad, p_total);
+    INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe)
+    VALUES(p_venta, p_articulo, p_cantidad, p_importe);
 END $$
+DELIMITER ;
 
 
 

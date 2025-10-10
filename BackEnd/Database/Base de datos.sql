@@ -1,4 +1,5 @@
--- Active: 1755982550506@@127.0.0.1@3306
+-- Active: 1759723764735@@127.0.0.1@3306@AbarrotesJuarez
+
 --Creacion de base de datos
 CREATE DATABASE AbarrotesJuarez
 
@@ -21,16 +22,46 @@ CREATE TABLE CATEGORIA(
     descripcion VARCHAR(32) NOT NULL
 )
 
+CREATE TABLE PROVEEDOR(
+    num INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(32) NOT NULL
+) 
+
+CREATE TABLE CLIENTE(
+    num INT PRIMARY KEY AUTO_INCREMENT,
+    nombrePila VARCHAR(32) NOT NULL,
+    primerApellido VARCHAR(32) NOT NULL,
+    segApellido VARCHAR(32) NULL
+)
+
 --Tablas con llaves foraneas
+
+CREATE TABLE SALDO(
+    num INT PRIMARY KEY AUTO_INCREMENT,
+    total INT NOT NULL,
+    fechaRegistro DATE NOT NULL,
+    cliente INT NOT NULL,
+    FOREIGN Key (cliente) REFERENCES CLIENTE(num)
+)
+
+CREATE TABLE PAGO(
+    num INT PRIMARY KEY AUTO_INCREMENT,
+    montoPago DECIMAL(10,2) NOT NULL,
+    numPago INT NOT NULL,
+    fechaPago DATE NOT NULL,
+    saldo INT NOT NULL,
+    FOREIGN Key (saldo) REFERENCES SALDO(num)
+)
+
 CREATE TABLE VENTA(
     num INT PRIMARY KEY AUTO_INCREMENT,
-    fechaVenta DATE NOT NULL,
     total DECIMAL(10,2) NOT NULL,
+    metodoPago VARCHAR(5) NULL,
+    tipoPago VARCHAR(5) NOT NULL,
     recibido DECIMAL(10,2) NULL,
     cambio DECIMAL(10,2) NULL,
-    metodoPago VARCHAR(5) NOT NULL,
-    tipoPago VARCHAR(5) NOT NULL,
     saldo INT NULL,
+    fechaVenta DATE NOT NULL,
     FOREIGN Key (metodoPago) REFERENCES METODO_PAGO(codigo),
     FOREIGN Key (tipoPago) REFERENCES TIPO_PAGO(codigo),
     FOREIGN Key (saldo) REFERENCES SALDO(num)
@@ -40,35 +71,40 @@ CREATE TABLE ARTICULO(
     codigo VARCHAR(64) PRIMARY KEY,
     nombre VARCHAR(24) NOT NULL,
     descripcion VARCHAR(24) NOT NULL,
+    peso DECIMAL (10,2) NOT NULL,
+    categoria INT NOT NULL,
+    proveedor INT NOT NULL,
+    fechaCaducidad DATE NOT NULL,
     ultimaModificacion DATE NOT NULL,
-    peso DECIMAL (10,2) NULL,
     unidades INT NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
-    categoria INT,
-    Foreign Key (categoria) REFERENCES CATEGORIA(num)
+    Foreign Key (categoria) REFERENCES CATEGORIA(num),
+    Foreign Key (proveedor) REFERENCES PROVEEDOR(num)
 )
 
-CREATE TABLE SALDO(
-    num INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(24) NOT NULL,
-    primerApell VARCHAR(32) NOT NULL,
-    segApell VARCHAR(32) NULL,
-    fechaRegistro DATE NOT NULL,
-    fechaPago DATE NULL,
-    deuda DECIMAL(10,2) NOT NULL,
-    pago DECIMAL(10,2) NULL,
-    total DECIMAL(10,2) NOT NULL
+CREATE TABLE PEDIDO(
+    codigo VARCHAR(64) PRIMARY KEY,
+    total DECIMAL(10,2) NOT NULL,
+    fechaPedido DATE NOT NULL,
+    proveedor INT NOT NULL,
+    FOREIGN KEY (proveedor) REFERENCES PROVEEDOR(num)
 )
 
 --Tablas primarias foraneas
-CREATE TABLE ARTICULO_VENTA (
-    num INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE ARTICULO_POR_VENTA (
     venta INT NOT NULL,
     articulo VARCHAR(64) NOT NULL, 
     cantidad INT NOT NULL,
-    total DECIMAL(10,2) NOT NULL,
+    importe DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (articulo) REFERENCES ARTICULO(codigo),
     FOREIGN KEY (venta) REFERENCES VENTA(num)
+)
+
+CREATE TABLE ARTICULO_POR_PEDIDO(
+    pedido VARCHAR(64) NOT NULL,
+    articulo VARCHAR(64) NOT NULL,
+    FOREIGN KEY (articulo) REFERENCES ARTICULO(codigo),
+    FOREIGN KEY (pedido) REFERENCES PEDIDO(codigo)
 )
 
 --Consulta de consumo de datos

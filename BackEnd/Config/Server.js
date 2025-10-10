@@ -1,7 +1,6 @@
 require('../Apis/Procedures');
 require('../Apis/Views');
 require('../Apis/Kpis');
-require('../Apis/Graficas');
 
 const Host = require('./Host');
 const port = 3000;
