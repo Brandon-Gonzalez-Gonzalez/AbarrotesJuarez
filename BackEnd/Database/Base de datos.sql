@@ -1,4 +1,4 @@
--- Active: 1759723764735@@127.0.0.1@3306@AbarrotesJuarez
+-- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
 
 --Creacion de base de datos
 CREATE DATABASE AbarrotesJuarez

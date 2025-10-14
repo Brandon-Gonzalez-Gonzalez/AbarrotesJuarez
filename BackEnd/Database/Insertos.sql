@@ -1,4 +1,4 @@
--- Active: 1759981299603@@127.0.0.1@3306@AbarrotesJuarez
+-- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
 
 INSERT INTO METODO_PAGO(codigo, descripcion) VALUES
 ('EFECT', 'Efectivo'),
@@ -70,4 +70,3 @@ INSERT INTO ARTICULO_POR_PEDIDO(pedido, articulo) VALUES
 ('212223242526', '7506306415799'),
 ('313233343536', '7501000138944');
 
-select * from `ARTICULO_POR_VENTA`

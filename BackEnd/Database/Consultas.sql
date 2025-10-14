@@ -1,4 +1,4 @@
--- Active: 1759981299603@@127.0.0.1@3306@AbarrotesJuarez
+-- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
 USE AbarrotesJuarez
 
 --Visualizacion de inventario
@@ -42,9 +42,22 @@ SELECT
 FROM SALDO AS S
 LEFT JOIN PAGO AS P ON S.num = P.saldo
 INNER JOIN CLIENTE AS C ON S.cliente = C.num
+WHERE S.total > 0;
 
---Opcion de ver detalle de saldo
-
+--Visualizacion de articulos por saldo
+--Validar que solo considere saldos pendientes
+SELECT 
+    V.num AS Venta,
+    C.num AS Saldo,
+    A.nombre AS nombre_articulo,
+    AV.cantidad,
+    AV.importe
+FROM CLIENTE AS C
+INNER JOIN SALDO AS S ON C.num = S.cliente
+INNER JOIN VENTA AS V ON S.num = V.saldo
+INNER JOIN ARTICULO_POR_VENTA AS AV ON V.num = AV.venta
+INNER JOIN ARTICULO AS A ON AV.articulo = A.codigo
+WHERE C.num = 1 
 
 --KPI de ganancias
 SELECT 
