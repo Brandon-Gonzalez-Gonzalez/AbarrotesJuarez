@@ -1,138 +1,146 @@
--- Sp RegistroDeVenta
+-- Sp Categoria
 DELIMITER $$
-
-CREATE PROCEDURE RegistroDeVenta(
-    IN p_fechaVenta DATE,
-    IN p_total DECIMAL(10,2),
-    IN p_recibido DECIMAL(10,2),
-    IN p_cambio DECIMAL(10,2),
-    IN p_metodoPago VARCHAR(5),
-    IN p_tipoPago VARCHAR(5),
-    IN p_saldo INT
+CREATE PROCEDURE SP_CATEGORIA(
+    IN Descripcion VARCHAR(32)
 )
 BEGIN
-    INSERT INTO VENTA(fechaVenta, total, recibido, cambio, metodoPago, tipoPago, saldo)
-    VALUES(p_fechaVenta, p_total, p_recibido, p_cambio, p_metodoPago, p_tipoPago, p_saldo);
+    INSERT INTO CATEGORIA(descripcion) VALUES(Descripcion);
 END $$
-
 DELIMITER ;
 
--- Sp AñadirArticulo
+-- SP Proveedor
 DELIMITER $$
-
-CREATE PROCEDURE AñadirArticulo(
-    IN p_codigo VARCHAR(64),
-    IN p_nombre VARCHAR(24),
-    IN p_descripcion VARCHAR(24),
-    IN p_peso DECIMAL(10,2),
-    IN p_categoria INT,
-    IN p_proveedor INT,
-    IN p_fechaCaducidad DATE,
-    IN p_ultimaModificacion DATE,
-    IN p_unidades INT,
-    IN p_precio DECIMAL(10,2)
+CREATE PROCEDURE SP_PROVEEDOR(
+    IN Nombre VARCHAR(32)
 )
 BEGIN
-    INSERT INTO ARTICULO(
-        codigo, nombre, descripcion, peso, categoria, proveedor,
-        fechaCaducidad, ultimaModificacion, unidades, precio
-    )
-    VALUES(
-        p_codigo, p_nombre, p_descripcion, p_peso, p_categoria, p_proveedor,
-        p_fechaCaducidad, p_ultimaModificacion, p_unidades, p_precio
-    );
+    INSERT INTO PROVEEDOR(nombre) VALUES(Nombre);
 END $$
-
-DELIMITER ;
-
--- Sp AgregarSaldo
-DELIMITER $$
-
-CREATE PROCEDURE AgregarSaldo(
-    IN p_total DECIMAL(10,2),
-    IN p_fechaRegistro DATE,
-    IN p_cliente INT
-)
-BEGIN
-    INSERT INTO SALDO(total, fechaRegistro, cliente)
-    VALUES(p_total, p_fechaRegistro, p_cliente);
-END $$
-
 DELIMITER ;
 
 -- Sp AgregarCliente
 DELIMITER $$
 
-CREATE PROCEDURE AgregarCliente(
-    IN p_nombrePila VARCHAR(32),
-    IN p_primerApellido VARCHAR(32),
-    IN p_segApellido VARCHAR(32)
+CREATE PROCEDURE SP_CLIENTE(
+    IN NombrePila VARCHAR(32),
+    IN PrimerApellido VARCHAR(32),
+    IN SegundoApellido VARCHAR(32)
 )
 BEGIN
     INSERT INTO CLIENTE(nombrePila, primerApellido, segApellido)
-    VALUES(p_nombrePila, p_primerApellido, p_segApellido);
+    VALUES(NombrePila, PrimerApellido, SegundoApellido);
 END $$
+DELIMITER ;
 
+-- Sp AgregarSaldo
+DELIMITER $$
+
+CREATE PROCEDURE SP_SALDO(
+    IN Total INT,
+    IN FechaRegistro DATE,
+    IN Cliente INT
+)
+BEGIN
+    INSERT INTO SALDO(total, fechaRegistro, cliente)
+    VALUES(Total, FechaRegistro, Cliente);
+END $$
 DELIMITER ;
 
 -- Sp AgregarPago
 DELIMITER $$
 
-CREATE PROCEDURE AgregarPago(
-    IN p_montoPago DECIMAL(10,2),
-    IN p_numPago INT,
-    IN p_fechaPago DATE,
-    IN p_saldo INT
+CREATE PROCEDURE SP_PAGO(
+    IN MontoPago DECIMAL(10,2),
+    IN NumPago INT,
+    IN FechaPago DATE,
+    IN Saldo INT
 )
 BEGIN
     INSERT INTO PAGO(montoPago, numPago, fechaPago, saldo)
-    VALUES(p_montoPago, p_numPago, p_fechaPago, p_saldo);
+    VALUES(MontoPago, NumPago, FechaPago, Saldo);
 END $$
-
 DELIMITER ;
 
--- Sp ArticulosPorVenta
+-- Sp RegistroDeVenta
 DELIMITER $$
 
-CREATE PROCEDURE ArticulosPorVenta(
-    IN p_venta INT,
-    IN p_articulo VARCHAR(64),
-    IN p_cantidad INT,
-    IN p_importe DECIMAL(10,2)
+CREATE PROCEDURE SP_VENTA(
+    IN Total DECIMAL(10,2),
+    IN MetodoPago VARCHAR(5),
+    IN TipoPago VARCHAR(5),
+    IN Recibido DECIMAL(10,2),
+    IN Cambio DECIMAL(10,2),
+    IN Saldo INT,
+    IN FechaVenta DATE
 )
 BEGIN
-    INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe)
-    VALUES(p_venta, p_articulo, p_cantidad, p_importe);
+    INSERT INTO VENTA(total, metodoPago, tipoPago, recibido, cambio, saldo, fechaVenta)
+    VALUES(Total, MetodoPago, TipoPago, Recibido, Cambio, Saldo, FechaVenta);
 END $$
+DELIMITER ;
 
+-- Sp AñadirArticulo
+DELIMITER $$
+
+CREATE PROCEDURE SP_ARTICULO(
+    Codigo VARCHAR(64),
+    Nombre VARCHAR(24),
+    Descripcion VARCHAR(24),
+    Peso DECIMAL(10,2),
+    Categoria INT,
+    Proveedor INT,
+    FechaCaducidad DATE,
+    UltimaModificacion DATE,
+    Unidades INT,
+    Precio DECIMAL(10,2)
+)
+BEGIN
+    INSERT INTO ARTICULO(codigo, nombre, descripcion, peso, categoria, proveedor, fechaCaducidad, ultimaModificacion, unidades, precio)
+    VALUES(Codigo, Nombre, Descripcion, Peso, Categoria, Proveedor, FechaCaducidad, UltimaModificacion, Unidades, Precio);
+END $$
 DELIMITER ;
 
 -- Sp AgregarPedido
 DELIMITER $$
 
-CREATE PROCEDURE AgregarPedido(
-    IN p_codigo VARCHAR(64),
-    IN p_total DECIMAL(10,2),
-    IN p_fechaPedido DATE,
-    IN p_proveedor INT
+CREATE PROCEDURE SP_PEDIDO(
+    IN Codigo VARCHAR(64),
+    IN Total DECIMAL(10,2),
+    IN FechaPedido DATE,
+    IN Proveedor INT
 )
 BEGIN
     INSERT INTO PEDIDO(codigo, total, fechaPedido, proveedor)
-    VALUES(p_codigo, p_total, p_fechaPedido, p_proveedor);
+    VALUES(Codigo, Total, FechaPedido, Proveedor);
 END $$
+DELIMITER ;
 
+-- Sp ArticulosPorVenta
+DELIMITER $$
+
+CREATE PROCEDURE SP_ARTICULOS_POR_VENTA(
+    IN Venta INT,
+    IN Articulo VARCHAR(64),
+    IN Cantidad INT,
+    IN Importe DECIMAL(10,2)
+)
+BEGIN
+    INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe)
+    VALUES(Venta, Articulo, Cantidad, Importe);
+END $$
 DELIMITER ;
 
 -- Sp ArticulosPorPedido
 DELIMITER $$
 
-CREATE PROCEDURE ArticulosPorPedido(
-    IN p_pedido VARCHAR(64),
-    IN p_articulo VARCHAR(64)
+CREATE PROCEDURE SP_ARTICULOS_POR_PEDIDO(
+    IN Pedido VARCHAR(64),
+    IN Articulo VARCHAR(64),
+    IN Cantidad INT,
 )
 BEGIN
-    INSERT INTO ARTICULO_POR_PEDIDO(pedido, articulo)
-    VALUES(p_pedido, p_articulo);
+    INSERT INTO ARTICULO_POR_PEDIDO(pedido, articulo, cantidad)
+    VALUES(Pedido, Articulo, Cantidad);
 END $$
-
 DELIMITER ;
+

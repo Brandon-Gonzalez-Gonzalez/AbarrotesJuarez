@@ -45,10 +45,7 @@ INNER JOIN CLIENTE AS C ON S.cliente = C.num
 WHERE S.total > 0;
 
 --Visualizacion de articulos por saldo
---Validar que solo considere saldos pendientes
 SELECT 
-    V.num AS Venta,
-    C.num AS Saldo,
     A.nombre AS nombre_articulo,
     AV.cantidad,
     AV.importe
@@ -57,7 +54,7 @@ INNER JOIN SALDO AS S ON C.num = S.cliente
 INNER JOIN VENTA AS V ON S.num = V.saldo
 INNER JOIN ARTICULO_POR_VENTA AS AV ON V.num = AV.venta
 INNER JOIN ARTICULO AS A ON AV.articulo = A.codigo
-WHERE C.num = 1 
+
 
 --KPI de ganancias
 SELECT 

@@ -43,6 +43,18 @@ LEFT JOIN PAGO AS P ON S.num = P.saldo
 INNER JOIN CLIENTE AS C ON S.cliente = C.num
 WHERE S.total > 0;
 
+CREATE VIEW VW_DETALLE_SALDO AS
+SELECT 
+    C.num AS Cliente,
+    A.nombre AS "Nombre del articulo",
+    AV.cantidad,
+    AV.importe
+FROM CLIENTE AS C
+INNER JOIN SALDO AS S ON C.num = S.cliente
+INNER JOIN VENTA AS V ON S.num = V.saldo
+INNER JOIN ARTICULO_POR_VENTA AS AV ON V.num = AV.venta
+INNER JOIN ARTICULO AS A ON AV.articulo = A.codigo
+
 use AbarrotesJuarez
 
 SELECT * FROM VW_INVENTARIO
@@ -50,4 +62,6 @@ SELECT * FROM VW_INVENTARIO
 SELECT * FROM VW_GANANCIAS
 
 SELECT * FROM VW_SALDOS--drop
+
+SELECT * FROM VW_DETALLE_SALDO WHERE Cliente = 1 
 
