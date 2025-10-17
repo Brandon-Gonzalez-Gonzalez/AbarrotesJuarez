@@ -16,6 +16,9 @@ export var Url = {
             {parent: 'ganancias',
                 url: 'Components/ganancias'
             },
+            {parent: 'facturas',
+                url: 'Components/facturas'
+            },
             {parent: 'inventario',
                 url: 'Components/inventario'
             },

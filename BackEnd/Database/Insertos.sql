@@ -51,11 +51,11 @@ INSERT INTO ARTICULO(codigo, nombre, descripcion, peso, categoria, proveedor, fe
 ('7501000138944', 'Galletas Sponch', 'Paquete individual', 120, 4, 4, '2026-10-07', '2025-10-07', 10, 25);
 
 
-INSERT INTO PEDIDO(codigo, total, fechaPedido, proveedor) VALUES
-('010203040506', 360, '2025-10-07', 1),
-('111213141516', 150, '2025-10-07', 2),
-('212223242526', 250, '2025-10-07', 3),
-('313233343536', 250, '2025-10-07', 4);
+INSERT INTO FACTURA(codigo, fechaPedido, proveedor) VALUES
+('010203040506', '2025-10-07', 1),
+('111213141516', '2025-10-07', 2),
+('212223242526', '2025-10-07', 3),
+('313233343536', '2025-10-07', 4);
 
 
 INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe) VALUES
@@ -63,10 +63,10 @@ INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe) VALUES
 (1, '7501000138944', 1, 25),
 (2, '7502269480027', 5, 75);
 
--- Insertar ARTICULO_POR_PEDIDO
-INSERT INTO ARTICULO_POR_PEDIDO(pedido, articulo, cantidad) VALUES
-('010203040506', '7501020513134', 10),
-('111213141516', '7502269480027', 10),
-('212223242526', '7506306415799', 10),
-('313233343536', '7501000138944', 10);
+-- Insertar ARTICULO_POR_FACTURA
+INSERT INTO ARTICULO_POR_FACTURA(factura, articulo, cantidad, costoUnitario, costoTotal, costoVenta, porcentajeVenta) VALUES
+('010203040506', '7501020513134', 10, 34, 340, 36, 5.90),
+('111213141516', '7502269480027', 10, 13, 130, 15, 15.40),
+('212223242526', '7506306415799', 10, 22, 220, 25, 13.60),
+('313233343536', '7501000138944', 10, 23, 230, 25, 8.70);
 

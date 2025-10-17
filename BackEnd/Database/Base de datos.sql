@@ -82,11 +82,10 @@ CREATE TABLE ARTICULO(
     Foreign Key (proveedor) REFERENCES PROVEEDOR(num)
 )
 
-CREATE TABLE PEDIDO(
-    codigo VARCHAR(64) PRIMARY KEY,
-    total DECIMAL(10,2) NOT NULL,
-    fechaPedido DATE NOT NULL,
-    proveedor INT NOT NULL,
+CREATE TABLE FACTURA(
+    codigo VARCHAR(64) PRIMARY KEY, 
+    fechaFactura DATE NOT NULL, 
+    proveedor INT NOT NULL, 
     FOREIGN KEY (proveedor) REFERENCES PROVEEDOR(num)
 )
 
@@ -100,13 +99,16 @@ CREATE TABLE ARTICULO_POR_VENTA (
     FOREIGN KEY (venta) REFERENCES VENTA(num)
 )
 
-CREATE TABLE ARTICULO_POR_PEDIDO(
-    pedido VARCHAR(64) NOT NULL,
-    articulo VARCHAR(64) NOT NULL,
-    cantidad INT NOT NULL,
-    importe DECIMAL(10,2) NOT NULL,
+CREATE TABLE ARTICULO_POR_FACTURA(
+    factura VARCHAR(64) NOT NULL,
+    articulo VARCHAR(64) NOT NULL,  
+    cantidad INT NOT NULL, 
+    costoUnitario DECIMAL(10,2) NOT NULL,
+    costoTotal DECIMAL(10,2) NOT NULL,
+    costoVenta DECIMAL(10,2) NOT NULL,
+    porcentajeVenta DECIMAL(5,2) NOT NULL,
     FOREIGN KEY (articulo) REFERENCES ARTICULO(codigo),
-    FOREIGN KEY (pedido) REFERENCES PEDIDO(codigo)
+    FOREIGN KEY (factura) REFERENCES FACTURA(codigo)
 )
 
 --Consulta de consumo de datos
