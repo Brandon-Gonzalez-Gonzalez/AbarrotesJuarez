@@ -7,6 +7,7 @@ import { cargarGanancias } from "../ganancias/ganancias.js";
 const rutas = [
     { parent: "content", url: "Components/ventas" },
     { parent: "content", url: "Components/ganancias", init: cargarGanancias},
+    { parent: "content", url: "Components/facturas" },
     { parent: "content", url: "Components/inventario", init: cargarInventario},
     { parent: "content", url: "Components/analisis" }
 ];

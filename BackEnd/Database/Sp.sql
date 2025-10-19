@@ -1,4 +1,4 @@
--- Sp Categoria
+-- Sp Categoria listo en el back
 DELIMITER $$
 CREATE PROCEDURE SP_CATEGORIA(
     IN Descripcion VARCHAR(32)
@@ -8,7 +8,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- SP Proveedor
+-- SP Proveedor listo en el back
 DELIMITER $$
 CREATE PROCEDURE SP_PROVEEDOR(
     IN Nombre VARCHAR(32)
@@ -18,7 +18,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp AgregarCliente
+-- Sp AgregarCliente listo en el back 
 DELIMITER $$
 
 CREATE PROCEDURE SP_CLIENTE(
@@ -32,7 +32,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp AgregarSaldo
+-- Sp AgregarSaldo listo en el back
 DELIMITER $$
 
 CREATE PROCEDURE SP_SALDO(
@@ -46,8 +46,8 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp AgregarPago
-DELIMITER $$
+-- Sp AgregarPago listo en el back
+DELIMITER $$ 
 
 CREATE PROCEDURE SP_PAGO(
     IN MontoPago DECIMAL(10,2),
@@ -61,7 +61,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp RegistroDeVenta
+-- Sp RegistroDeVenta listo en el back
 DELIMITER $$
 
 CREATE PROCEDURE SP_VENTA(
@@ -79,7 +79,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp AñadirArticulo
+-- Sp AñadirArticulo listo en el back
 DELIMITER $$
 
 CREATE PROCEDURE SP_ARTICULO(
@@ -100,22 +100,21 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp AgregarPedido
+-- Sp AgregarFactura listo en el back
 DELIMITER $$
 
-CREATE PROCEDURE SP_PEDIDO(
+CREATE PROCEDURE SP_FACTURA(
     IN Codigo VARCHAR(64),
-    IN Total DECIMAL(10,2),
-    IN FechaPedido DATE,
+    IN FechaFactura DATE,
     IN Proveedor INT
 )
 BEGIN
-    INSERT INTO PEDIDO(codigo, total, fechaPedido, proveedor)
-    VALUES(Codigo, Total, FechaPedido, Proveedor);
+    INSERT INTO FACTURA(codigo, fechaFactura, proveedor)
+    VALUES(Codigo, FechaFactura, Proveedor);
 END $$
 DELIMITER ;
 
--- Sp ArticulosPorVenta
+-- Sp ArticulosPorVenta listo en el back
 DELIMITER $$
 
 CREATE PROCEDURE SP_ARTICULOS_POR_VENTA(
@@ -130,17 +129,21 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Sp ArticulosPorPedido
+-- Sp ArticulosPorFactura
 DELIMITER $$
 
-CREATE PROCEDURE SP_ARTICULOS_POR_PEDIDO(
-    IN Pedido VARCHAR(64),
+CREATE PROCEDURE SP_ARTICULOS_POR_FACTURA(
+    IN Factura VARCHAR(64),
     IN Articulo VARCHAR(64),
     IN Cantidad INT,
+    IN CostoUnitario DECIMAL(10,2),
+    IN CostoTotal DECIMAL(10,2),
+    IN CostoVenta DECIMAL(5,2),
+    IN PorcentajeVenta DECIMAL(10,2)
 )
 BEGIN
-    INSERT INTO ARTICULO_POR_PEDIDO(pedido, articulo, cantidad)
-    VALUES(Pedido, Articulo, Cantidad);
+    INSERT INTO ARTICULO_POR_FACTURA(factura, articulo, cantidad, costoUnitario, costoTotal, costoVenta, porcentajeVenta)
+    VALUES(Pedido, Articulo, Cantidad, CostoUnitario, CostoTotal, CostoVenta, PorcentajeVenta);
 END $$
 DELIMITER ;
 

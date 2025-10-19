@@ -51,7 +51,7 @@ INSERT INTO ARTICULO(codigo, nombre, descripcion, peso, categoria, proveedor, fe
 ('7501000138944', 'Galletas Sponch', 'Paquete individual', 120, 4, 4, '2026-10-07', '2025-10-07', 10, 25);
 
 
-INSERT INTO FACTURA(codigo, fechaPedido, proveedor) VALUES
+INSERT INTO FACTURA(codigo, fechaFactura, proveedor) VALUES
 ('010203040506', '2025-10-07', 1),
 ('111213141516', '2025-10-07', 2),
 ('212223242526', '2025-10-07', 3),

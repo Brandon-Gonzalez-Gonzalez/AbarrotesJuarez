@@ -19,13 +19,13 @@ CREATE VIEW VW_GANANCIAS AS
 SELECT V.num AS Registro,
        MP.descripcion AS "Metodo de pago",
        TP.descripcion AS "Tipo de pago",
-       V.fechaVenta AS "Fecha de la venta",
+       DATE_FORMAT(V.fechaVenta, '%d/%m/%Y') AS "Fecha de la venta",
        V.recibido - COALESCE(V.cambio, 0) AS Ganancia
 FROM VENTA AS V
 LEFT JOIN SALDO AS S ON V.saldo = S.num
 LEFT JOIN METODO_PAGO AS MP ON V.metodoPago = MP.codigo
 INNER JOIN TIPO_PAGO AS TP ON V.tipoPago = TP.codigo
-WHERE V.recibido IS NOT NULL;
+WHERE V.recibido IS NOT NULL;   
 
 --Vista de saldos
 CREATE VIEW VW_SALDOS AS
@@ -55,13 +55,30 @@ INNER JOIN VENTA AS V ON S.num = V.saldo
 INNER JOIN ARTICULO_POR_VENTA AS AV ON V.num = AV.venta
 INNER JOIN ARTICULO AS A ON AV.articulo = A.codigo
 
+CREATE VIEW VW_FACTURAS AS
+SELECT 
+    AF.factura AS "Ticket",
+    P.nombre AS "Proveedor",
+    A.nombre AS "Artículo",
+    AF.cantidad AS "Cantidad",
+    AF.costoUnitario AS "Costo unitario",
+    AF.costoTotal AS "Costo total",
+    AF.costoVenta AS "Costo de venta",
+    AF.porcentajeVenta AS "Porcentaje",
+    DATE_FORMAT(F.fechaFactura, '%d/%m/%Y') AS "Fecha de factura"
+FROM ARTICULO_POR_FACTURA AS AF
+INNER JOIN ARTICULO AS A ON AF.articulo = A.codigo
+INNER JOIN FACTURA AS F ON AF.factura = F.codigo
+INNER JOIN PROVEEDOR AS P ON F.proveedor = P.num
+
 use AbarrotesJuarez
 
 SELECT * FROM VW_INVENTARIO
 
 SELECT * FROM VW_GANANCIAS
 
-SELECT * FROM VW_SALDOS--drop
+SELECT * FROM VW_SALDOS
 
 SELECT * FROM VW_DETALLE_SALDO WHERE Cliente = 1 
 
+SELECT * FROM VW_FACTURAS

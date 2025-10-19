@@ -12,10 +12,9 @@ export async function cargarGanancias() {
             const fila = document.createElement("tr");
             fila.innerHTML = `
                 <td>${item.Registro}</td>
-                <td>${item["Fecha de la venta"]}</td>
                 <td>${item["Metodo de pago"]}</td>
-                <td>${item.Articulo}</td>
-                <td>${item.Cantidad}</td>
+                <td>${item["Tipo de pago"]}</td>
+                <td>${item["Fecha de la venta"]}</td>
                 <td>${item.Ganancia}</td>
             `;
             tablaBody.appendChild(fila);
@@ -25,3 +24,5 @@ export async function cargarGanancias() {
         console.error("Fallo la carga de ganancias:", error);
     }
 }
+
+

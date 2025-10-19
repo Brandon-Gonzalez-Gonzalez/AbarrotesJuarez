@@ -21,7 +21,7 @@ SELECT
     V.num AS Registro,
     MP.descripcion AS "Metodo de pago",
     TP.descripcion AS "Tipo de pago",
-    V.fechaVenta AS "Fecha de la venta",
+    DATE_FORMAT(V.fechaVenta, '%d/%m/%Y') AS "Fecha de la venta",
     V.recibido - COALESCE(V.cambio, 0) AS Ganancia
 FROM VENTA AS V
 LEFT JOIN SALDO AS S ON V.saldo = S.num
@@ -65,7 +65,7 @@ SELECT
     AF.costoTotal AS "Costo total",
     AF.costoVenta AS "Costo de venta",
     AF.porcentajeVenta AS "Porcentaje",
-    DATE_FORMAT(F.fechaPedido, '%d/%m/%Y') AS "Fecha de factura"
+    DATE_FORMAT(F.fechaFactura, '%d/%m/%Y') AS "Fecha de factura"
 FROM ARTICULO_POR_FACTURA AS AF
 INNER JOIN ARTICULO AS A ON AF.articulo = A.codigo
 INNER JOIN FACTURA AS F ON AF.factura = F.codigo
@@ -91,7 +91,6 @@ SELECT
 FROM VENTA AS V
 INNER JOIN ARTICULO_POR_VENTA AS AV ON V.num = AV.venta
    
-
 --KPI de saldos
 SELECT 
     SUM(S.total) AS "Ganancias retenidas",
