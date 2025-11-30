@@ -1,1 +1,88 @@
-Facturas
+<link rel="stylesheet" href="/AbarrotesJuarez/FrontEnd/Components/facturas/facturas.css">
+
+<div class="div-kpis">
+
+    <table id="tbl-kpiCostoTotal">
+        <thead>
+            <tr>
+                <th>COSTO TOTAL</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <table id="tbl-kpiGanancia">
+        <thead>
+            <tr>
+                <th>GANANCIAS</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <button id="btn-agregar">AGREGAR</button>
+    <button id="btn-exportar">EXPORTAR</button>
+
+</div>
+
+<div class="div-facturas">
+    <table id="tbl-facturas">
+        <thead>
+            <tr>
+                <th>Ticket</th>
+                <th>Proveedor</th>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+                <th>Costo total</th>
+                <th>Costo de venta</th>
+                <th>Porcentaje</th>
+                <th>Fecha de factura</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="modal-factura" class="modal-overlay">
+    <div class="modal-content">
+        
+        <div class="modal-header">
+            <h2>Nueva Factura</h2>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-header-row">
+                <div class="input-group group-ticket">
+                    <label>Factura</label>
+                    <input type="text" id="input-ticket" placeholder="Ej. A-001">
+                </div>
+
+                <div class="input-group group-fecha">
+                    <label>Fecha</label>
+                    <input type="text" id="input-fecha" readonly style="background-color: #eee; cursor: not-allowed;">
+                </div>
+
+                <div class="input-group group-proveedor">
+                    <label>Proveedor</label>
+                    <div class="select-with-btn">
+                        <select id="sel-proveedor-header">
+                            <option value="">Seleccione un proveedor</option>
+                            </select>
+                        <button class="btn-small-add">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contenedor-productos">
+                </div>
+
+            <button id="btn-agregar-producto" class="btn-secundario">Agregar otro articulo</button>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btn-cancelar-modal" class="btn-cancelar">Cancelar</button>
+            <button id="btn-guardar-factura" class="btn-guardar">Guardar Factura</button>
+        </div>
+    </div>
+</div>

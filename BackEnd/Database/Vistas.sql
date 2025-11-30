@@ -3,7 +3,7 @@ CREATE VIEW VW_INVENTARIO AS
 SELECT A.codigo AS Upc,
        A.nombre AS Nombre,
        A.descripcion AS Descripción,
-       A.peso AS "Peso (gr)",
+       A.peso AS "Peso (g)",
        C.descripcion AS Categoria,
        P.nombre AS Proveedor,
        DATE_FORMAT(A.fechaCaducidad, '%d/%m/%Y') AS "Fecha de caducidad",
@@ -34,9 +34,9 @@ SELECT
     CONCAT(C.nombrePila, ' ', 
            C.primerApellido, ' ', 
            C.segApellido) AS "Nombre del cliente",
-    S.fechaRegistro AS "Fecha de registro",
+        DATE_FORMAT(S.fechaRegistro, '%d/%m/%Y') AS "Fecha de registro",
     P.montoPago AS "Monto pagado",
-    P.fechaPago AS "Fecha de pago",
+    DATE_FORMAT(P.fechaPago, '%d/%m/%Y') AS "Fecha de pago",
     S.total AS Total
 FROM SALDO AS S
 LEFT JOIN PAGO AS P ON S.num = P.saldo

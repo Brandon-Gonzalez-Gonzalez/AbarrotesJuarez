@@ -11,8 +11,12 @@
     color: white;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    /*cursor: pointer;
-    transition: background-color 0.2s ease;*/
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn-contado:hover {
+    background-color: #1E8449;
 }
 
 #btn-saldo {
@@ -27,27 +31,11 @@
     color: white;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    /*cursor: pointer;
-    transition: background-color 0.2s ease;*/
-}
-
-#btn-exportar {
-    margin-left: 845px;
-    margin-top: 20px;
-    width: 192px;
-    height: 50px;
-    border: none;
-    outline: none;
-    font-size: 28px;
-    background-color: #27AE60;
-    color: white;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-#btn-agregar:hover {
+#btn-saldo:hover {
     background-color: #1E8449;
 }
 
@@ -73,7 +61,7 @@
 #tbl-kpiGanancia {
     border-collapse: collapse;
     margin-bottom: 20px;
-    width: 180px;
+    width: 200px;
     height: 80px;
     box-shadow: 0px 4px 8px gray;
     border-radius: 5px;
@@ -104,7 +92,7 @@
 #tbl-kpiArticulos {
     border-collapse: collapse;
     margin-bottom: 20px;
-    width: 250px;
+    width: 180px;
     height: 80px;
     box-shadow: 0px 4px 8px gray;
     border-radius: 5px;
@@ -132,6 +120,7 @@
     text-align: center;
 }
 
+/*Ya esta bien*/
 .div-contenido {
     width: 1375px;
     height: 400px;
@@ -161,3 +150,102 @@
 #tbl-ganancias th:last-child {
     border-top-right-radius: 5px;
 }
+
+/*SALDOS*/
+.div-kpis {
+    display: flex;   
+    gap: 20px;       
+}
+
+#tbl-kpiGananciaRetenida {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 80px;
+    box-shadow: 0px 4px 8px gray;
+    border-radius: 5px;
+}
+
+#tbl-kpiGananciaRetenida th {
+    font-size: 16px;
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+}
+
+#tbl-kpiGananciaRetenida th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-kpiGananciaRetenida th:last-child {
+    border-top-right-radius: 5px;
+}
+
+#tbl-kpiGananciaRetenida td {
+    padding-top: 10px;
+    font-size: 24px;
+    height: 50px;
+    text-align: center;
+}
+
+#tbl-kpiPersonas {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 80px;
+    box-shadow: 0px 4px 8px gray;
+    border-radius: 5px;
+}
+
+#tbl-kpiPersonas th {
+    font-size: 16px;
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+}
+
+#tbl-kpiPersonas th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-kpiPersonas th:last-child {
+    border-top-right-radius: 5px;
+}
+
+#tbl-kpiPersonas td {
+    padding-top: 10px;
+    font-size: 24px;
+    height: 50px;
+    text-align: center;
+}
+
+.div-contenido {
+    width: 1375px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px gray;
+}
+
+#tbl-saldos {
+    width: 1375px;
+    height: 80px;
+    line-height: 40px;
+    border-collapse: collapse;
+    font-size: 20px;
+    text-align: center;
+}
+
+#tbl-saldos th {
+    color: white;
+    background-color: #2C3E50;
+}
+
+#tbl-saldos th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#tbl-saldos th:last-child {
+    border-top-right-radius: 5px;
+}
+

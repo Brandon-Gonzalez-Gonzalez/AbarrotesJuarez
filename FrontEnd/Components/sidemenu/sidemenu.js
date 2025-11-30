@@ -1,13 +1,15 @@
 //Importacion de componentes
 import { Componentes } from "../../Js/Servicios.js"; 
-import { cargarInventario } from "../../Components/inventario/inventario.js";
-import { cargarGanancias } from "../ganancias/ganancias.js";
+import { cargarInventario } from "../inventario/inventario.js";
+import { cargarFacturas } from "../facturas/facturas.js";  
+import { cargarGanancias, pestañas } from "../ganancias/ganancias.js";
+import { recargasButze } from "../ventas/ventas.js"; 
 
 //Asignacion de contenido
 const rutas = [
-    { parent: "content", url: "Components/ventas" },
-    { parent: "content", url: "Components/ganancias", init: cargarGanancias},
-    { parent: "content", url: "Components/facturas" },
+    { parent: "content", url: "Components/ventas", init: recargasButze },
+    { parent: "content", url: "Components/ganancias", init: () => { cargarGanancias(); cargarFacturas(); }, toggle: pestañas },
+    { parent: "content", url: "Components/facturas", init: cargarFacturas },
     { parent: "content", url: "Components/inventario", init: cargarInventario},
     { parent: "content", url: "Components/analisis" }
 ];
@@ -26,7 +28,11 @@ document.querySelectorAll(".sidemenu-container button").forEach(btn => {
             await Componentes(ruta);
 
             if (ruta.init && typeof ruta.init === "function") {
-                ruta.init();
+            await ruta.init(); // asegúrate de usar await si init es async
+            }
+
+            if (ruta.toggle && typeof ruta.toggle === "function") {
+                ruta.toggle(); // aquí sí ejecutamos el toggle
             }
 
             const modulo = document.querySelector("#h-modulo");

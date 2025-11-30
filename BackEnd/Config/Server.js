@@ -1,4 +1,5 @@
 require('../Apis/Procedures');
+require('../Apis/Updates');
 require('../Apis/Views');
 require('../Apis/Kpis');
 

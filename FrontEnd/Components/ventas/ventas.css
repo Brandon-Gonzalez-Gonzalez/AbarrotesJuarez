@@ -281,3 +281,54 @@ select {
 #btn-pagar:hover {
     background-color: #2C80B4;
 }
+
+/* Fondo del modal (ocupa toda la pantalla) */
+#modal-recarga {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1920px;  /* pantalla completa */
+    height: 1080px;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+/* Modal centrado y tamaño fijo */
+.modal-contenido {
+    background-color: #fff;
+    width: 1200px;   /* ancho del modal */
+    height: 600px;   /* alto del modal */
+    border-radius: 10px;
+    position: absolute;
+    top: 390px;      /* mitad de la pantalla */
+    left: 800px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-contenido iframe {
+    width: 100%;
+    height: 100%;   
+    border: none;
+}
+
+/* Botón cerrar arriba a la derecha */
+#btn-cerrar {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+

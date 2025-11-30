@@ -2,22 +2,20 @@
 
 <input type="text" id="inp-escaner" placeholder="Ingresa codigo de barras / nombre del producto">
 
-<button id="btn-filtrar">FILTRAR</button>
-
 <button id="btn-ajustar">AJUSTAR</button>
-
-<button id="btn-agregar">AGREGAR</button>
 
 <div class="div-inventario">
     <table id="tbl-inventario">
         <thead>
             <tr>
-                <th>Código</th>
+                <th>Upc</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
-                <th>Categoria</th>
-                <th>Última modificación</th>
                 <th>Peso (g)</th>
+                <th>Categoria</th>
+                <th>Proveedor</th>
+                <th>Fecha de caducidad</th>
+                <th>Última modificación</th>
                 <th>Unidades</th>
                 <th>Precio</th>
             </tr>
@@ -27,3 +25,22 @@
     </table>
 </div>
 
+<div id="modal-ajustar" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h2>Ajustar precio</h2>
+
+        <label>Artículo:</label>
+        <select id="sel-articulo"></select>
+
+        <label>Precio actual:</label>
+        <input type="text" id="precio-actual" readonly>
+
+        <label>Nuevo precio:</label>
+        <input type="number" id="nuevo-precio">
+
+        <div class="modal-buttons">
+            <button id="btn-confirmar">CONFIRMAR</button>
+            <button id="btn-cancelar">CANCELAR</button>
+        </div>
+    </div>
+</div>

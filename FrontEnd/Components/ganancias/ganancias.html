@@ -4,65 +4,87 @@
 
 <button id="btn-saldo">SALDO</button>
 
-<button id="btn-exportar">EXPORTAR</button>
+<div class="div-ganancias"> 
+    <div class="div-contado">
+        <div class="div-kpis">
 
-<div class="div-ganancias">
+            <table id="tbl-kpiGanancia">
+                <tr>
+                    <th>GANANCIAS</th>
+                </tr>
+                <tr>
+                    <td>44.00</td>
+                </tr>
+            </table>
 
-    <div class="div-kpis">
+            <table id="tbl-kpiArticulos">
+                <tr>
+                    <th>ARTICULOS VENDIDOS</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                </tr>
+            </table>
+        </div>
+        <div class="div-contenido">
 
-        <table id="tbl-kpiGanancia">
-            <tr>
-                <th>GANANCIAS</th>
-            </tr>
-            <tr>
-                <td>44.00</td>
-            </tr>
-        </table>
+            <table id="tbl-ganancias">
+                <thead>
+                    <tr>
+                        <th>Registro</th>
+                        <th>Método de pago</th>
+                        <th>Tipo de pago</th>
+                        <th>Fecha de la venta</th>
+                        <th>Ganancia</th>
+                    </tr>
+                </thead>
 
-        <table id="tbl-kpiArticulos">
-            <tr>
-                <th>ARTICULOS VENDIDOS</th>
-            </tr>
-            <tr>
-                <td>2</td>
-            </tr>
-        </table>
-
-        <table id="tbl-fechaInicio">
-            <tr>
-                <th>FECHA INICIO</th>
-            </tr>
-            <tr>
-                <td><input type="date" id="inp-fechaInicio"></td>
-            </tr>
-        </table>
-
-        <table id="tbl-fechaFin">
-            <tr>
-                <th>FECHA FIN</th>
-            </tr>
-            <tr>
-                <td><input type="date" id="inp-fechaFin"></td>
-            </tr>
-        </table>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="div-contenido">
+    <!--SALDOS-->
+    <div class="div-saldo">
+        <div class="div-kpis">
 
-        <table id="tbl-ganancias">
-            <thead>
+            <table id="tbl-kpiGananciaRetenida">
                 <tr>
-                    <th>Registro</th>
-                    <th>Método de pago</th>
-                    <th>Tipo de pago</th>
-                    <th>Fecha de la venta</th>
-                    <th>Ganancia</th>
+                    <th>GANANCIAS RETENIDAS</th>
                 </tr>
-            </thead>
+                <tr>
+                    <td>44.00</td>
+                </tr>
+            </table>
 
-            <tbody>
-            </tbody>
-        </table>
+            <table id="tbl-kpiPersonas">
+                <tr>
+                    <th>PERSONAS</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="div-contenido">
+
+            <table id="tbl-saldos">
+                <thead>
+                    <tr>
+                        <th>Registro</th>
+                        <th>Nombre del cliente</th>
+                        <th>Fecha de registro</th>
+                        <th>Monto pagado</th>
+                        <th>Fecha de pago</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
