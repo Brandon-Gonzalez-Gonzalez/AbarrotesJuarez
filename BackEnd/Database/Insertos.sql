@@ -1,4 +1,4 @@
--- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
+-- Active: 1755982550506@@127.0.0.1@3306@abarrotesjuarez
 
 INSERT INTO METODO_PAGO(codigo, descripcion) VALUES
 ('EFECT', 'Efectivo'),

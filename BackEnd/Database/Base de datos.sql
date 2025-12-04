@@ -1,6 +1,7 @@
--- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
-
+-- Active: 1755982550506@@127.0.0.1@3306
 --Creacion de base de datos
+drop database AbarrotesJuarez
+
 CREATE DATABASE AbarrotesJuarez
 
 --Indicador de uso de base de datos
@@ -88,6 +89,8 @@ CREATE TABLE FACTURA(
     proveedor INT NOT NULL, 
     FOREIGN KEY (proveedor) REFERENCES PROVEEDOR(num)
 )
+
+select * from FACTURA
 
 --Tablas primarias foraneas
 CREATE TABLE ARTICULO_POR_VENTA (

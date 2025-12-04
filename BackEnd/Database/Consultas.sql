@@ -1,4 +1,4 @@
--- Active: 1760298017574@@127.0.0.1@3306@AbarrotesJuarez
+-- Active: 1755982550506@@127.0.0.1@3306@abarrotesjuarez
 USE AbarrotesJuarez
 
 --Visualizacion de inventario
@@ -98,3 +98,8 @@ SELECT
 FROM SALDO AS S
 INNER JOIN CLIENTE AS C ON S.cliente = C.num
 
+SELECT codigo, nombre
+FROM ARTICULO
+
+SELECT num, nombre
+FROM PROVEEDOR

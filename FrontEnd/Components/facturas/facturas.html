@@ -1,28 +1,22 @@
 <link rel="stylesheet" href="/AbarrotesJuarez/FrontEnd/Components/facturas/facturas.css">
 
 <div class="div-kpis">
-
     <table id="tbl-kpiCostoTotal">
         <thead>
-            <tr>
-                <th>COSTO TOTAL</th>
-            </tr>
+            <tr><th>COSTO TOTAL</th></tr>
         </thead>
         <tbody></tbody>
     </table>
 
     <table id="tbl-kpiGanancia">
         <thead>
-            <tr>
-                <th>GANANCIAS</th>
-            </tr>
+            <tr><th>GANANCIAS</th></tr>
         </thead>
         <tbody></tbody>
     </table>
 
     <button id="btn-agregar">AGREGAR</button>
     <button id="btn-exportar">EXPORTAR</button>
-
 </div>
 
 <div class="div-facturas">
@@ -46,7 +40,6 @@
 
 <div id="modal-factura" class="modal-overlay">
     <div class="modal-content">
-        
         <div class="modal-header">
             <h2>Nueva Factura</h2>
         </div>
@@ -60,7 +53,7 @@
 
                 <div class="input-group group-fecha">
                     <label>Fecha</label>
-                    <input type="text" id="input-fecha" readonly style="background-color: #eee; cursor: not-allowed;">
+                    <input type="date" id="input-fecha">
                 </div>
 
                 <div class="input-group group-proveedor">
@@ -68,8 +61,8 @@
                     <div class="select-with-btn">
                         <select id="sel-proveedor-header">
                             <option value="">Seleccione un proveedor</option>
-                            </select>
-                        <button class="btn-small-add">+</button>
+                        </select>
+                        <button id="btn-add-new-provider" class="btn-small-add" type="button">+</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +76,82 @@
         <div class="modal-footer">
             <button id="btn-cancelar-modal" class="btn-cancelar">Cancelar</button>
             <button id="btn-guardar-factura" class="btn-guardar">Guardar Factura</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-nuevo-proveedor" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 400px; border: 1px solid #444;">
+        <div class="modal-header">
+            <h3>Nuevo Proveedor</h3>
+        </div>
+        <div class="modal-body">
+            <div class="input-group">
+                <label>Nombre del Proveedor</label>
+                <input type="text" id="input-nuevo-prov-nombre" placeholder="Ej. Bimbo">
+            </div>
+        </div>
+        <div class="modal-footer" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button id="btn-cancelar-prov" class="btn-cancelar" style="background: #666; color: white; padding: 8px 15px; border: none; cursor: pointer;">Cancelar</button>
+            <button id="btn-guardar-prov" class="btn-guardar" style="background: #28a745; color: white; padding: 8px 15px; border: none; cursor: pointer;">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal-nuevo-articulo" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 700px; border: 1px solid #444;">
+        <div class="modal-header">
+            <h3>Nuevo Artículo</h3>
+        </div>
+        <div class="modal-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="input-group">
+                <label>Código de Barras</label>
+                <input type="text" id="new-art-codigo">
+            </div>
+            <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" id="new-art-nombre">
+            </div>
+            
+            <div class="input-group" style="grid-column: span 2;">
+                <label>Descripción</label>
+                <input type="text" id="new-art-desc">
+            </div>
+
+            <div class="input-group">
+                <label>Peso</label>
+                <input type="number" id="new-art-peso" step="0.01">
+            </div>
+            <div class="input-group">
+                <label>Precio (Lista)</label>
+                <input type="number" id="new-art-precio" step="0.50">
+            </div>
+
+            <div class="input-group">
+                <label>Categoría</label>
+                <select id="new-art-categoria" style="width: 100%; padding: 8px;">
+                    <option value="">Cargando...</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Proveedor</label>
+                <select id="new-art-proveedor" style="width: 100%; padding: 8px;">
+                    <option value="">Cargando...</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Fecha Caducidad</label>
+                <input type="date" id="new-art-caducidad">
+            </div>
+            <div class="input-group">
+                <label>Unidades Iniciales</label>
+                <input type="number" id="new-art-unidades" value="0">
+            </div>
+        </div>
+        <div class="modal-footer" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button id="btn-cancelar-art" class="btn-cancelar" style="background: #666; color: white; padding: 8px 15px; border: none; cursor: pointer;">Cancelar</button>
+            <button id="btn-guardar-art" class="btn-guardar" style="background: #28a745; color: white; padding: 8px 15px; border: none; cursor: pointer;">Guardar</button>
         </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
 /*PROCEDIMIENTOS ALMACENADOS DE INSERCION DE DATOS*/
 
+use AbarrotesJuarez
+
 -- Sp Categoria listo en el back
 DELIMITER $$
 CREATE PROCEDURE SP_CATEGORIA(
@@ -131,7 +133,14 @@ BEGIN
 END $$
 DELIMITER ;
 
+USE AbarrotesJuarez
+
+drop procedure SP_ARTICULOS_POR_FACTURA
+
 -- Sp ArticulosPorFactura
+
+drop procedure SP_ARTICULOS_POR_FACTURA
+
 DELIMITER $$
 
 CREATE PROCEDURE SP_ARTICULOS_POR_FACTURA(
@@ -140,12 +149,12 @@ CREATE PROCEDURE SP_ARTICULOS_POR_FACTURA(
     IN Cantidad INT,
     IN CostoUnitario DECIMAL(10,2),
     IN CostoTotal DECIMAL(10,2),
-    IN CostoVenta DECIMAL(5,2),
+    IN CostoVenta DECIMAL(10,2),
     IN PorcentajeVenta DECIMAL(10,2)
 )
 BEGIN
     INSERT INTO ARTICULO_POR_FACTURA(factura, articulo, cantidad, costoUnitario, costoTotal, costoVenta, porcentajeVenta)
-    VALUES(Pedido, Articulo, Cantidad, CostoUnitario, CostoTotal, CostoVenta, PorcentajeVenta);
+    VALUES(Factura, Articulo, Cantidad, CostoUnitario, CostoTotal, CostoVenta, PorcentajeVenta);
 END $$
 DELIMITER ;
 
@@ -168,3 +177,104 @@ END$$
 DELIMITER ;
 
 CALL SP_ACTUALIZAR_PRECIO_ARTICULO('7501000138944', 60);
+DELIMITER $$
+
+DELIMITER $$
+
+use AbarrotesJuarez
+
+DROP PROCEDURE IF EXISTS sp_ActualizarProducto$$
+
+CREATE PROCEDURE sp_ActualizarProducto(
+    IN p_Codigo VARCHAR(64),       -- Ajustado a 64 chars como tu tabla
+    IN p_Nombre VARCHAR(24),       -- Ajustado a 24 chars
+    IN p_Descripcion VARCHAR(24),  -- Ajustado a 24 chars
+    IN p_Peso DECIMAL(10,2),
+    IN p_Categoria VARCHAR(32),    -- Recibimos NOMBRE (Texto)
+    IN p_Proveedor VARCHAR(32),    -- Recibimos NOMBRE (Texto)
+    IN p_FechaCaducidad DATE,
+    IN p_Unidades INT,
+    IN p_Precio DECIMAL(10,2)
+)
+BEGIN
+    -- Variables para guardar los IDs numéricos
+    DECLARE v_CategoriaNum INT;
+    DECLARE v_ProveedorNum INT;
+
+    -- 1. Buscamos el ID de la Categoría usando el nombre que mandó el frontend
+    SELECT num INTO v_CategoriaNum 
+    FROM CATEGORIA 
+    WHERE descripcion = p_Categoria 
+    LIMIT 1;
+
+    -- 2. Buscamos el ID del Proveedor usando el nombre
+    SELECT num INTO v_ProveedorNum 
+    FROM PROVEEDOR 
+    WHERE nombre = p_Proveedor 
+    LIMIT 1;
+
+    -- 3. Actualizamos la tabla ARTICULO usando los nombres EXACTOS de tu script
+    UPDATE ARTICULO
+    SET 
+        nombre = IFNULL(p_Nombre, nombre),
+        descripcion = IFNULL(p_Descripcion, descripcion),
+        peso = IFNULL(p_Peso, peso),
+        
+        -- Guardamos el NÚMERO, no el texto. Si no encontró ID, deja el que estaba.
+        categoria = IFNULL(v_CategoriaNum, categoria),
+        proveedor = IFNULL(v_ProveedorNum, proveedor),
+        
+        -- Aquí estaba el error anterior: corregido a CamelCase
+        fechaCaducidad = IFNULL(p_FechaCaducidad, fechaCaducidad),
+        
+        unidades = IFNULL(p_Unidades, unidades),
+        precio = IFNULL(p_Precio, precio),
+        
+        -- Corregido a CamelCase
+        ultimaModificacion = CURDATE()
+        
+    WHERE codigo = p_Codigo;
+END$$
+
+DELIMITER ;
+
+
+
+USE AbarrotesJuarez;
+
+DROP PROCEDURE IF EXISTS SP_VENTA;
+DELIMITER $$
+CREATE PROCEDURE SP_VENTA(
+    IN _total DECIMAL(10,2),
+    IN _metodoPago VARCHAR(5),
+    IN _tipoPago VARCHAR(5),
+    IN _recibido DECIMAL(10,2),
+    IN _cambio DECIMAL(10,2),
+    IN _saldo INT,
+    IN _fechaVenta DATE
+)
+BEGIN
+    -- Insertamos la venta
+    INSERT INTO VENTA (total, metodoPago, tipoPago, recibido, cambio, saldo, fechaVenta)
+    VALUES (_total, _metodoPago, _tipoPago, _recibido, _cambio, _saldo, _fechaVenta);
+    
+    -- ESTO ES LO IMPORTANTE: Devolvemos el ID generado
+    SELECT LAST_INSERT_ID() as id;
+END$$
+DELIMITER ;
+
+-- Procedimiento para insertar los productos de la venta
+DROP PROCEDURE IF EXISTS SP_ARTICULOS_POR_VENTA;
+DELIMITER $$
+CREATE PROCEDURE SP_ARTICULOS_POR_VENTA(
+    IN _venta INT,
+    IN _articulo VARCHAR(64),
+    IN _cantidad INT,
+    IN _importe DECIMAL(10,2)
+)
+BEGIN
+    INSERT INTO ARTICULO_POR_VENTA (venta, articulo, cantidad, importe)
+    VALUES (_venta, _articulo, _cantidad, _importe);
+END$$
+DELIMITER ;
+
