@@ -15,6 +15,7 @@ const Venta = require('../Controllers/Procedures/Venta');
 //Rutas
 Host.use('/api/crearArticulo', Articulo);
 Host.use('/api/listaArticulo', Articulo);
+Host.use('/api/buscar', Articulo);
 Host.use('/api/actualizarArticulo', Articulo);
 Host.use('/api/crearArticuloPorFactura', ArticuloPorFactura);
 Host.use('/api/crearArticuloPorVenta', ArticuloPorVenta);

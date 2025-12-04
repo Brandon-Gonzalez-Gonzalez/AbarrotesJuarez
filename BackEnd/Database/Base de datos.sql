@@ -54,6 +54,10 @@ CREATE TABLE PAGO(
     FOREIGN Key (saldo) REFERENCES SALDO(num)
 )
 
+use AbarrotesJuarez
+
+select * from VENTA
+
 CREATE TABLE VENTA(
     num INT PRIMARY KEY AUTO_INCREMENT,
     total DECIMAL(10,2) NOT NULL,

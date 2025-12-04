@@ -22,9 +22,6 @@ export var Url = {
             {parent: 'inventario',
                 url: 'Components/inventario'
             },
-            {parent: 'analisis',
-                url: 'Components/analisis'
-            },
         ]
     }
 };
