@@ -12,9 +12,7 @@ INSERT INTO TIPO_PAGO(codigo, descripcion) VALUES
 --(AUTO_INCREMENT, omitir num)
 INSERT INTO CATEGORIA(descripcion) VALUES
 ('Productos lacteos'),
-('Frutos secos'),
-('Postres congelados'),
-('Galletas');
+('Frutos secos')
 
 --(AUTO_INCREMENT, omitir num)
 INSERT INTO PROVEEDOR(nombre) VALUES
@@ -41,14 +39,9 @@ INSERT INTO VENTA(total, metodoPago, tipoPago, recibido, cambio, saldo, fechaVen
 (97, 'EFECT', 'CONTA', 100, 3, NULL, '2025-10-07'),
 (75, NULL, 'SALDO', NULL, NULL, 1, '2025-10-07');
 
-INSERT INTO VENTA(total, metodoPago, tipoPago, recibido, cambio, saldo, fechaVenta) VALUES
-(55, NULL, 'SALDO', 55, NULL, 1, '2025-10-08');
-
 INSERT INTO ARTICULO(codigo, nombre, descripcion, peso, categoria, proveedor, fechaCaducidad, ultimaModificacion, unidades, precio) VALUES
-('7501020513134', 'Crema original', 'Envase individual', 196, 1, 1, '2026-10-07', '2025-10-07', 10, 36),
-('7502269480027', 'Almendras', 'Paquete individual', 28, 2, 2, '2026-10-07', '2025-10-07', 10, 15),
-('7506306415799', 'Magnum clásica', 'Paquete individual', 71.2, 3, 3, '2026-10-07', '2025-10-07', 10, 25),
-('7501000138944', 'Galletas Sponch', 'Paquete individual', 120, 4, 4, '2026-10-07', '2025-10-07', 10, 25);
+('7501020513134', 'Crema original', 'Envase individual', 96, 1, 1, '2026-10-07', '2025-10-07', 10, 36),
+('7502269480027', 'Almendras', 'Paquete individual', 28, 2, 2, '2026-10-07', '2025-10-07', 10, 15)
 
 
 INSERT INTO FACTURA(codigo, fechaFactura, proveedor) VALUES
@@ -60,8 +53,7 @@ INSERT INTO FACTURA(codigo, fechaFactura, proveedor) VALUES
 
 INSERT INTO ARTICULO_POR_VENTA(venta, articulo, cantidad, importe) VALUES
 (1, '7501020513134', 2, 72),
-(1, '7501000138944', 1, 25),
-(2, '7502269480027', 5, 75);
+(2, '7502269480027', 5, 75)
 
 -- Insertar ARTICULO_POR_FACTURA
 INSERT INTO ARTICULO_POR_FACTURA(factura, articulo, cantidad, costoUnitario, costoTotal, costoVenta, porcentajeVenta) VALUES

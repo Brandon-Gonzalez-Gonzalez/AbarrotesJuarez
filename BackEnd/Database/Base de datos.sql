@@ -124,4 +124,6 @@ CREATE TABLE ARTICULO_POR_FACTURA(
     WHERE table_schema = 'AbarrotesJuarez'
     GROUP BY table_schema;
     
-    
+Use AbarrotesJuarez
+
+

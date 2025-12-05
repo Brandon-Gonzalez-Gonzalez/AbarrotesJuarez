@@ -112,7 +112,6 @@ export async function cargarSaldos() {
             const fila = document.createElement("tr");
             fila.innerHTML = `
                 <td>${item.Registro}</td>
-                <td>${item["Nombre del cliente"]}</td>
                 <td>${item["Fecha de registro"]}</td>
                 <td>${item["Monto pagado"]}</td>
                 <td>${item["Fecha de pago"]}</td>
