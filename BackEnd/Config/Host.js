@@ -15,7 +15,7 @@ const frontPath = path.join(__dirname, "../../FrontEnd");
 Host.use(express.static(frontPath));
 
 // Rutas que no coincidan con API → index.html
-Host.get("*", (req, res) => {
+Host.get("/*", (req, res) => {
   res.sendFile(path.join(frontPath, "index.html"));
 });
 
